@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_assistant/constants/theme_constants.dart';
 import 'package:smart_assistant/view/screens/main_screen.dart';
+import 'package:smart_assistant/view_model/suggestions_vm.dart';
+import 'package:smart_assistant/view_model/theme_vm.dart';
+
+import 'data/datasources/remote/suggestions_api.dart';
+import 'data/datasources/repositories/suggestions_repository.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) =>
+              HomeViewModel(SuggestionRepository(SuggestionRemoteDataSource()),),
+        ),
+        ChangeNotifierProvider(create: (_) => ThemeViewModel()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,11 +31,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: MainScreen()
+      themeMode: context.watch<ThemeViewModel>().themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      home: MainScreen(),
     );
   }
 }

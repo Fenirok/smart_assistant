@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_assistant/view/screens/chat_history_screen.dart';
-import 'package:smart_assistant/view/screens/chat_screen.dart';
-import 'package:smart_assistant/view/screens/home_screen.dart';
+import 'package:smart_assistant/view/screens/chat_history/chat_history_screen.dart';
+import 'package:smart_assistant/view/screens/chat/chat_screen.dart';
+import 'package:smart_assistant/view/screens/home/home_screen.dart';
 import 'package:smart_assistant/view/widgets/bottom_nav_bar.dart';
 
 

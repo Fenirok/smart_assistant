@@ -1,14 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import '../../../constants/api_constants.dart';
 
 class SuggestionRemoteDataSource {
-  final String baseUrl;
-
-  SuggestionRemoteDataSource(this.baseUrl);
-
   Future<List<Map<String, dynamic>>> fetchAllSuggestions() async {
     final response = await http.get(
-      Uri.parse('$baseUrl/suggestions'),
+      Uri.parse(ApiConstants.suggestions),
     );
 
     if (response.statusCode == 200) {

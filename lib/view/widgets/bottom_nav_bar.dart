@@ -17,7 +17,7 @@ class BottomNavBar extends StatelessWidget {
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final double navBarHeight = size.height * 0.073; // 8.5% of screen height
     final double iconContainerSize = size.width * 0.18; // 15% of screen width
-    // final double iconSize = size.width * 0.07; // 7% of screen width
+    final double iconSize = size.width * 0.1; // 7% of screen width
     // final double horizontalPadding = size.width * 0.1; // 5% of screen width
     // final double verticalPadding = size.height * 0.02; // 1.5% of screen height
 
@@ -25,7 +25,7 @@ class BottomNavBar extends StatelessWidget {
       height: navBarHeight + bottomPadding,
       decoration: BoxDecoration(
         color: Color(0xFFFFFFFF),
-        border: Border(top: BorderSide(color: Colors.grey)),
+        border: Border(top: BorderSide(color: Colors.grey.shade100)),
       ),
       child: Padding(
         padding: EdgeInsets.only(bottom: bottomPadding),
@@ -33,8 +33,8 @@ class BottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             BottomNavBarItem(
-              selectedIcon: Icon(Icons.home, color: Colors.blue, size: 37,),
-              unselectedIcon: Icon(Icons.home, color: Colors.grey, size: 37,),
+              selectedIcon: Icon(Icons.home, color: Colors.blue.shade700, size: iconSize,),
+              unselectedIcon: Icon(Icons.home, color: Colors.grey, size: iconSize,),
               index: 0,
               selectedIndex: selectedIndex,
               iconContainerSize: iconContainerSize,
@@ -42,8 +42,8 @@ class BottomNavBar extends StatelessWidget {
             ),
 
             BottomNavBarItem(
-              selectedIcon: Icon(Icons.chat, color: Colors.blue,size: 37,),
-              unselectedIcon: Icon(Icons.chat, color: Colors.grey,size: 37,),
+              selectedIcon: Icon(Icons.chat, color: Colors.blue,size: iconSize,),
+              unselectedIcon: Icon(Icons.chat, color: Colors.grey,size: iconSize,),
               index: 1,
               selectedIndex: selectedIndex,
               //selectedColor: Color(0xFF0092A6),
@@ -52,8 +52,8 @@ class BottomNavBar extends StatelessWidget {
             ),
 
             BottomNavBarItem(
-              selectedIcon: Icon(Icons.history, color: Colors.blue,size: 37,),
-              unselectedIcon: Icon(Icons.history, color: Colors.grey,size: 37,),
+              selectedIcon: Icon(Icons.history, color: Colors.blue,size: iconSize,),
+              unselectedIcon: Icon(Icons.history, color: Colors.grey,size: iconSize,),
               index: 2,
               selectedIndex: selectedIndex,
               iconContainerSize: iconContainerSize,
