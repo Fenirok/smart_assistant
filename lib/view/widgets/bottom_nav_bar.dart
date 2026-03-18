@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smart_assistant/view/widgets/bottom_nav_bar_items.dart';
+
+import '../../view_model/theme_vm.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -14,6 +17,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final themeProvider = Provider.of<ThemeViewModel>(context, listen: false);
     final size = MediaQuery.of(context).size;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final double navBarHeight = size.height * 0.073; // 8.5% of screen height
@@ -25,8 +29,8 @@ class BottomNavBar extends StatelessWidget {
     return Container(
       height: navBarHeight + bottomPadding,
       decoration: BoxDecoration(
-        color: Color(0xFFFFFFFF),
-        border: Border(top: BorderSide(color: Colors.grey.shade100)),
+        color: theme.colorScheme.background,
+        border: Border(top: BorderSide(color: theme.colorScheme.background)),
       ),
       child: Padding(
         padding: EdgeInsets.only(bottom: bottomPadding),
