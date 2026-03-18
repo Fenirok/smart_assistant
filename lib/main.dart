@@ -6,7 +6,8 @@ import 'package:smart_assistant/view_model/chat_history_vm.dart';
 import 'package:smart_assistant/view_model/chat_vm.dart';
 import 'package:smart_assistant/view_model/suggestions_vm.dart';
 import 'package:smart_assistant/view_model/theme_vm.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
+import 'data/datasources/local/chat_local.dart';
 import 'data/datasources/remote/chat_api.dart';
 import 'data/datasources/remote/chat_history_api.dart';
 import 'data/datasources/remote/suggestions_api.dart';
@@ -14,7 +15,11 @@ import 'data/datasources/repositories/chat_history_repository.dart';
 import 'data/datasources/repositories/chat_repository.dart';
 import 'data/datasources/repositories/suggestions_repository.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  await Hive.openBox('chatBox');
   runApp(
     MultiProvider(
       providers: [
@@ -34,6 +39,7 @@ void main() {
           create: (_) => ChatViewModel(
             ChatRepository(
               ChatRemoteDataSource(),
+              ChatLocalDataSource(),
             ),
           ),
         ),

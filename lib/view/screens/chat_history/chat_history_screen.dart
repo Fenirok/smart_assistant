@@ -13,7 +13,9 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<ChatHistoryViewModel>().loadHistory();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ChatHistoryViewModel>().loadHistory();
+    });
   }
 
   @override

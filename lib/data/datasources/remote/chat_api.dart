@@ -14,27 +14,29 @@ class ChatRemoteDataSource {
         "message": userMessage,
       }),
     );
-
     if (response.statusCode == 200) {
+      // final decoded = jsonDecode(response.body);
+      //
+      // final List list = decoded;
+      //
+      // final items =
+      // list.map((e) => ChatItem.fromJson(e)).toList();
+      //
+      // final matched = items.firstWhere(
+      //       (item) =>
+      //   item.message.toLowerCase().trim() ==
+      //       userMessage.toLowerCase().trim(),
+      //   orElse: () => ChatItem(
+      //     id: "0",
+      //     message: "",
+      //     reply: "Sorry, I don't understand that yet.",
+      //   ),
+      // );
+      //
+      // return matched.reply;
       final decoded = jsonDecode(response.body);
 
-      final List list = decoded;
-
-      final items =
-      list.map((e) => ChatItem.fromJson(e)).toList();
-
-      final matched = items.firstWhere(
-            (item) =>
-        item.message.toLowerCase().trim() ==
-            userMessage.toLowerCase().trim(),
-        orElse: () => ChatItem(
-          id: "0",
-          message: "",
-          reply: "Sorry, I don't understand that yet.",
-        ),
-      );
-
-      return matched.reply;
+      return decoded['reply'];
     } else {
       throw Exception("Failed to send message");
     }
