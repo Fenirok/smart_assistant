@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../data/models/suggestions_model.dart';
+import '../../../../data/models/conversation_model.dart';
 
-class SuggestionCard extends StatelessWidget {
-  final Suggestion suggestion;
+class ChatHistoryCard extends StatelessWidget {
+  final Conversations convo;
 
-  const SuggestionCard({super.key, required this.suggestion});
+  const ChatHistoryCard({super.key, required this.convo});
 
   @override
   Widget build(BuildContext context) {
@@ -12,29 +12,28 @@ class SuggestionCard extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 6,
+          )
         ],
       ),
       child: Row(
         children: [
-          // Icon box
+          // Icon
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: theme.colorScheme.primary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
-              Icons.auto_awesome,
+              Icons.history,
               color: theme.colorScheme.primary,
             ),
           ),
@@ -47,19 +46,21 @@ class SuggestionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  suggestion.title,
+                  convo.title,
                   style: TextStyle(
                     color: theme.colorScheme.onSurface,
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontSize: 15,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  suggestion.description,
+                  convo.subtitle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: theme.colorScheme.onSurfaceVariant,
-                    fontSize: 14,
+                    fontSize: 13,
                   ),
                 ),
               ],
@@ -70,7 +71,7 @@ class SuggestionCard extends StatelessWidget {
             Icons.arrow_forward_ios,
             size: 16,
             color: theme.colorScheme.onSurfaceVariant,
-          ),
+          )
         ],
       ),
     );

@@ -13,6 +13,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final size = MediaQuery.of(context).size;
     final bottomPadding = MediaQuery.of(context).padding.bottom;
     final double navBarHeight = size.height * 0.073; // 8.5% of screen height
@@ -33,8 +34,8 @@ class BottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             BottomNavBarItem(
-              selectedIcon: Icon(Icons.home, color: Colors.blue.shade700, size: iconSize,),
-              unselectedIcon: Icon(Icons.home, color: Colors.grey, size: iconSize,),
+              selectedIcon: Icon(Icons.home, color: theme.colorScheme.primary, size: iconSize,),
+              unselectedIcon: Icon(Icons.home, color: theme.colorScheme.onSurfaceVariant, size: iconSize,),
               index: 0,
               selectedIndex: selectedIndex,
               iconContainerSize: iconContainerSize,
@@ -42,8 +43,8 @@ class BottomNavBar extends StatelessWidget {
             ),
 
             BottomNavBarItem(
-              selectedIcon: Icon(Icons.chat, color: Colors.blue,size: iconSize,),
-              unselectedIcon: Icon(Icons.chat, color: Colors.grey,size: iconSize,),
+              selectedIcon: Icon(Icons.chat, color: theme.colorScheme.primary,size: iconSize,),
+              unselectedIcon: Icon(Icons.chat, color: theme.colorScheme.onSurfaceVariant, size: iconSize,),
               index: 1,
               selectedIndex: selectedIndex,
               //selectedColor: Color(0xFF0092A6),
@@ -52,8 +53,8 @@ class BottomNavBar extends StatelessWidget {
             ),
 
             BottomNavBarItem(
-              selectedIcon: Icon(Icons.history, color: Colors.blue,size: iconSize,),
-              unselectedIcon: Icon(Icons.history, color: Colors.grey,size: iconSize,),
+              selectedIcon: Icon(Icons.history, color: theme.colorScheme.primary,size: iconSize,),
+              unselectedIcon: Icon(Icons.history, color: theme.colorScheme.onSurfaceVariant, size: iconSize,),
               index: 2,
               selectedIndex: selectedIndex,
               iconContainerSize: iconContainerSize,

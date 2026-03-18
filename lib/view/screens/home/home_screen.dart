@@ -16,7 +16,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     final vm = context.read<HomeViewModel>();
-    vm.init();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      vm.init();
+    });
+
 
     controller.addListener(() {
       if (controller.position.pixels >=
@@ -31,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final vm = context.watch<HomeViewModel>();
 
     return Scaffold(
-      backgroundColor: Color(0xF9FAFB),
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         toolbarHeight: 80,
         //backgroundColor: Colors.pinkAccent,

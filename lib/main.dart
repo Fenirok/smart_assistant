@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_assistant/constants/theme_constants.dart';
 import 'package:smart_assistant/view/screens/main_screen.dart';
+import 'package:smart_assistant/view_model/chat_history_vm.dart';
 import 'package:smart_assistant/view_model/suggestions_vm.dart';
 import 'package:smart_assistant/view_model/theme_vm.dart';
 
+import 'data/datasources/remote/chat_history_api.dart';
 import 'data/datasources/remote/suggestions_api.dart';
+import 'data/datasources/repositories/chat_history_repository.dart';
 import 'data/datasources/repositories/suggestions_repository.dart';
 
 void main() {
@@ -17,6 +20,13 @@ void main() {
               HomeViewModel(SuggestionRepository(SuggestionRemoteDataSource()),),
         ),
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),
+        ChangeNotifierProvider(
+          create: (_) => ChatHistoryViewModel(
+            ChatHistoryRepository(
+              ChatHistoryRemoteDataSource(),
+            ),
+          ),
+        ),
       ],
       child: MyApp(),
     ),
@@ -26,7 +36,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
