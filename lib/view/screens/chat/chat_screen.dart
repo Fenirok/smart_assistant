@@ -33,6 +33,8 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
+
+        leading: Icon(Icons.menu),
         toolbarHeight: 80,
         title: Text(
           "Assistant Chat",
@@ -56,36 +58,45 @@ class _ChatScreenState extends State<ChatScreen> {
 
           // Input
           Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            color: theme.colorScheme.surface,
             child: Row(
               children: [
+                Icon(Icons.image, color: theme.colorScheme.onSurfaceVariant),
+                const SizedBox(width: 10),
+                Icon(Icons.mic, color: theme.colorScheme.onSurfaceVariant),
+
+                const SizedBox(width: 10),
+
                 Expanded(
-                  child: TextField(
-                    controller: controller,
-                    style: TextStyle(
-                      color: theme.colorScheme.onSurface,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade700 ),
+                      color: theme.colorScheme.background,
+                      borderRadius: BorderRadius.circular(25),
                     ),
-                    decoration: InputDecoration(
-                      hintText: "Message assistant...",
-                      hintStyle: TextStyle(
-                        color: theme.colorScheme.onSurfaceVariant,
+                    child: TextField(
+                      controller: controller,
+                      decoration: const InputDecoration(
+                        hintText: "Ask something...",
+                        border: InputBorder.none,
                       ),
-                      border: InputBorder.none,
                     ),
                   ),
                 ),
 
-                GestureDetector(
-                  onTap: () {
-                    vm.sendMessage(controller.text);
-                    controller.clear();
-                  },
-                  child: CircleAvatar(
-                    backgroundColor: theme.colorScheme.primary,
-                    child: Icon(Icons.send, color: Colors.white),
+                const SizedBox(width: 10),
+
+                CircleAvatar(
+                  backgroundColor: theme.colorScheme.primary,
+                  child: IconButton(
+                    icon: const Icon(Icons.send, color: Colors.white),
+                    onPressed: () {
+                      final text = controller.text;
+                      controller.clear();
+                      vm.sendMessage(text);
+                    },
                   ),
                 )
               ],

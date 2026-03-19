@@ -6,13 +6,13 @@ class ChatViewModel extends ChangeNotifier {
   final ChatRepository repository;
 
   ChatViewModel(this.repository) {
-    loadMessages(); // 🔥 load saved messages
+    loadMessages(); // load saved messages
   }
 
   List<MessageBubble> messages = [];
   bool isTyping = false;
 
-  // 🔥 LOAD FROM HIVE
+  // LOAD FROM HIVE
   void loadMessages() {
     final data = repository.getLocalMessages();
 
@@ -34,7 +34,7 @@ class ChatViewModel extends ChangeNotifier {
 
     messages.add(userMsg);
 
-    // 🔥 SAVE USER MESSAGE
+    // SAVE USER MESSAGE
     repository.saveMessage(userMsg.toMap());
 
     notifyListeners();
@@ -55,12 +55,10 @@ class ChatViewModel extends ChangeNotifier {
 
       messages.add(botMsg);
 
-      // 🔥 SAVE BOT MESSAGE
+      // SAVE BOT MESSAGE
       repository.saveMessage(botMsg.toMap());
 
     } catch (e) {
-      print("ERROR: $e");
-
       messages.add(
         MessageBubble(
           text: "Something went wrong",

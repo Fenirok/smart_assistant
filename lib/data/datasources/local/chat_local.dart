@@ -15,7 +15,7 @@ class ChatLocalDataSource {
     final List data = box.get('messages', defaultValue: []);
 
     return data.map((e) {
-      return Map<String, dynamic>.from(e); // 🔥 FIX
+      return Map<String, dynamic>.from(e);
     }).toList();
   }
 

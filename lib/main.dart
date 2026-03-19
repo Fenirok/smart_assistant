@@ -32,6 +32,7 @@ void main() async{
           create: (_) => ChatHistoryViewModel(
             ChatHistoryRepository(
               ChatHistoryRemoteDataSource(),
+              ChatLocalDataSource(),
             ),
           ),
         ),

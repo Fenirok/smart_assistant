@@ -9,7 +9,7 @@ class MessageBubble {
     required this.time,
   });
 
-  // 🔥 Convert to Map (for Hive storage)
+  // Convert to Map (for Hive storage)
   Map<String, dynamic> toMap() {
     return {
       "text": text,
@@ -18,7 +18,7 @@ class MessageBubble {
     };
   }
 
-  // 🔥 Convert from Map (from Hive)
+  // Convert from Map (from Hive)
   factory MessageBubble.fromMap(Map<String, dynamic> map) {
     return MessageBubble(
       text: map['text'],
