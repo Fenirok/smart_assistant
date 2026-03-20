@@ -378,7 +378,10 @@ Ensures:
 
 ## 📱 Screenshots
 
+### Light Mode Screens
 ![Home Screen](screenshots/homeScreen.png)  ![chat Screen](screenshots/chatScreen.png) ![chat_history_Screen](screenshots/historyScreen.png) 
+
+### Dark Mode Screens
 ![Home Screen](screenshots/darkHomeScreen.png)  ![chat Screen](screenshots/darkChatScreen.png) ![chat_history_Screen](screenshots/darkHistoryScreen.png) 
 ![Chat History Screen](screenshots/offlineHistoryScreen.png)   
 
