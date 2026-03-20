@@ -378,7 +378,7 @@ Ensures:
 
 ## 📱 Screenshots
 
-
+![Home Screen](screenshots/home.png)
 
 ---
 
