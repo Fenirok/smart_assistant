@@ -6,47 +6,47 @@
 
 ## 📑 Table of Contents
 
-* [📖 Overview](#-overview)
-* [🧠 Architecture](#-architecture)
-* [🗂️ Project Structure](#-project-structure)
-* [📡 Backend Integration](#-backend-integration)
-* [🌐 Backend API (Hosted)](#-backend-api-hosted)
-* [⚙️ Core Features](#️-core-features)
-  * [💬 Chat System](#-chat-system)
-  * [📜 Chat History](#-chat-history)
-  * [💡 Suggestions (Pagination)](#-suggestions-pagination)
-  * [📡 Connectivity Handling](#-connectivity-handling)
-  * [💾 Local Storage (Hive)](#-local-storage-hive)
-* [🧪 Testing Strategy](#-testing-strategy)
-* [🧩 Key Engineering Decisions](#-key-engineering-decisions)
-* [📱 Screenshots](#-screenshots)
-* [🛠️ Setup Instructions](#️-setup-instructions)
-* [📦 Dependencies](#-dependencies)
-* [🚀 Future Improvements](#-future-improvements)
-* [👨‍💻 Author](#-author)
-* [📌 Conclusion](#-conclusion)
+* [Overview](#-overview)
+* [Architecture](#-architecture)
+* [Project Structure](#-project-structure)
+* [Backend Integration](#-backend-integration)
+* [Backend API (Hosted)](#-backend-api-hosted)
+* [Core Features](#️-core-features)
+  * [Chat System](#-chat-system)
+  * [Chat History](#-chat-history)
+  * [Suggestions (Pagination)](#-suggestions-pagination)
+  * [Connectivity Handling](#-connectivity-handling)
+  * [Local Storage (Hive)](#-local-storage-hive)
+* [Testing Strategy](#-testing-strategy)
+* [Key Engineering Decisions](#-key-engineering-decisions)
+* [Screenshots](#-screenshots)
+* [Setup Instructions](#️-setup-instructions)
+* [Dependencies](#-dependencies)
+* [Future Improvements](#-future-improvements)
+* [Author](#-author)
+* [Conclusion](#-conclusion)
 
 
 ---
 
-## 📖 Overview
+## Overview
 
 Smart Assistant is a **production-ready Flutter chat application** built using **MVVM + Clean Architecture principles**.
 
 It integrates:
 
-* 🌐 Custom backend APIs (hosted)
-* 💬 Real-time chat system
-* 📜 Chat history with offline fallback
-* 💡 Smart suggestions with pagination
-* 📡 Connectivity-aware data handling
-* 💾 Local persistence using Hive
+*  Custom backend APIs (hosted)
+*  Real-time chat system
+*  Chat history with offline fallback
+*  Smart suggestions with pagination
+*  Connectivity-aware data handling
+*  Local persistence using Hive
 
 The project is designed with **scalability, testability, and maintainability** as core priorities.
 
 ---
 
-## 🧠 Architecture
+##  Architecture
 
 The app follows a **layered MVVM architecture**:
 
@@ -64,7 +64,7 @@ Data Sources
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 lib/
@@ -83,7 +83,7 @@ lib/
 
 ---
 
-## 📡 Backend Integration
+##  Backend Integration
 
 The app connects to a **custom hosted backend API**:
 
@@ -99,11 +99,11 @@ Example:
 * Suggestions API supports bulk fetch (used for pagination)
 
 ---
-## 🌐 Backend API (Hosted)
+##  Backend API (Hosted)
 
 This application integrates with a **custom hosted backend** deployed on Render:
 
-### 🔗 Base URL
+###  Base URL
 
 ```
 https://mock-chat-api.onrender.com/
@@ -111,9 +111,9 @@ https://mock-chat-api.onrender.com/
 
 ---
 
-### 📡 API Endpoints
+###  API Endpoints
 
-#### 💬 Chat API
+####  Chat API
 
 Handles sending user messages and receiving assistant replies.
 
@@ -148,7 +148,7 @@ https://mock-chat-api.onrender.com/chat
 
 ---
 
-#### 💡 Suggestions API
+####  Suggestions API
 
 Provides predefined smart suggestions used in the home screen.
 
@@ -178,7 +178,7 @@ https://mock-chat-api.onrender.com/suggesitons
 
 ---
 
-#### 📜 Chat History API
+####  Chat History API
 
 Returns previous conversations.
 
@@ -211,7 +211,7 @@ https://mock-chat-api.onrender.com/chat/history
 
 ---
 
-### ⚠️ Notes
+### ⚠ Notes
 
 * APIs are **publicly hosted on Render**
 * No authentication required (for demo purposes)
@@ -223,7 +223,7 @@ https://mock-chat-api.onrender.com/chat/history
 
 ---
 
-### 🧠 Integration in App
+###  Integration in App
 
 * API calls handled via **Remote Data Sources**
 * Parsed into models and passed through **Repository layer**
@@ -235,9 +235,9 @@ Example implementation:
 * Suggestions → `SuggestionRemoteDataSource`
 * History → `ChatHistoryRemoteDataSource`
 
-## ⚙️ Core Features
+##  Core Features
 
-### 💬 Chat System
+###  Chat System
 
 * Sends user message to API
 * Receives assistant reply
@@ -246,7 +246,7 @@ Example implementation:
 
 ---
 
-### 📜 Chat History
+###  Chat History
 
 * Fetches from API when online
 * Falls back to Hive when offline
@@ -254,7 +254,7 @@ Example implementation:
 
 ---
 
-### 💡 Suggestions (Pagination)
+###  Suggestions (Pagination)
 
 * Loads suggestions from API
 * Implements lazy loading
@@ -262,7 +262,7 @@ Example implementation:
 
 ---
 
-### 📡 Connectivity Handling
+###  Connectivity Handling
 
 * Detects network changes
 * Auto-refresh on reconnect
@@ -270,7 +270,7 @@ Example implementation:
 
 ---
 
-### 💾 Local Storage (Hive)
+###  Local Storage (Hive)
 
 * Stores chat messages locally
 * Used for:
@@ -280,11 +280,11 @@ Example implementation:
 
 ---
 
-## 🧪 Testing Strategy
+##  Testing Strategy
 
 The project includes a **layered testing approach** ensuring reliability.
 
-### 📁 Test Structure
+###  Test Structure
 
 ```
 test/
@@ -296,7 +296,7 @@ test/
 
 ---
 
-### 🔹 1. Chat Core Testing
+### 1. Chat Core Testing
 
 Tests:
 
@@ -311,7 +311,7 @@ Approach:
 
 ---
 
-### 🔹 2. History Testing
+### 2. History Testing
 
 Tests:
 
@@ -324,7 +324,7 @@ Key Logic:
 
 ---
 
-### 🔹 3. Suggestions Testing
+### 3. Suggestions Testing
 
 Tests:
 
@@ -338,7 +338,7 @@ Special Handling:
 
 ---
 
-### 🔹 4. Widget Testing
+### 4. Widget Testing
 
 Tests UI components:
 
@@ -353,7 +353,7 @@ Ensures:
 
 ---
 
-### ✅ Testing Highlights
+###  Testing Highlights
 
 * Used **Fake classes instead of Mockito** → reduces flakiness
 * Covered **ViewModel + Repository + UI layers**
@@ -362,7 +362,7 @@ Ensures:
 
 ---
 
-## 🧩 Key Engineering Decisions
+##  Key Engineering Decisions
 
 ### ✔ MVVM Architecture
 
@@ -400,7 +400,7 @@ Ensures:
 
 ---
 
-## 📱 Screenshots
+##  Screenshots
 
 ### Light Mode Screens
 ![Home Screen](screenshots/homeScreen.png)  ![chat Screen](screenshots/chatScreen.png) ![chat_history_Screen](screenshots/historyScreen.png) 
@@ -415,7 +415,7 @@ Ensures:
 
 ## 🛠️ Setup Instructions
 
-### 1️⃣ Clone Repository
+### 1️. Clone Repository
 
 ```bash
 git clone https://github.com/Fenirok/smart_assistant.git
@@ -424,7 +424,7 @@ cd smart-assistant
 
 ---
 
-### 2️⃣ Install Dependencies
+### 2️. Install Dependencies
 
 ```bash
 flutter pub get
@@ -432,7 +432,7 @@ flutter pub get
 
 ---
 
-### 4️⃣ Run Application
+### 3. Run Application
 
 ```bash
 flutter run
@@ -440,7 +440,7 @@ flutter run
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 * `provider` → State management
 * `http` → API integration
@@ -449,7 +449,7 @@ flutter run
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 * Streaming responses (real-time AI typing)
 * Authentication system
@@ -459,13 +459,13 @@ flutter run
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 Aditya Halder
 
 ---
 
-## 📌 Conclusion
+##  Conclusion
 
 This project demonstrates:
 
@@ -477,4 +477,3 @@ This project demonstrates:
 
 ---
 
-## ⭐ If you like this project, give it a star!
