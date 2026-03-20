@@ -2,7 +2,30 @@
 
 ## 🔗 GitHub Repository
 
-👉 https://github.com/your-username/smart-assistant
+👉 https://github.com/Fenirok/smart_assistant
+
+## 📑 Table of Contents
+
+* [📖 Overview](#-overview)
+* [🧠 Architecture](#-architecture)
+* [🗂️ Project Structure](#-project-structure)
+* [📡 Backend Integration](#-backend-integration)
+* [🌐 Backend API (Hosted)](#-backend-api-hosted)
+* [⚙️ Core Features](#️-core-features)
+  * [💬 Chat System](#-chat-system)
+  * [📜 Chat History](#-chat-history)
+  * [💡 Suggestions (Pagination)](#-suggestions-pagination)
+  * [📡 Connectivity Handling](#-connectivity-handling)
+  * [💾 Local Storage (Hive)](#-local-storage-hive)
+* [🧪 Testing Strategy](#-testing-strategy)
+* [🧩 Key Engineering Decisions](#-key-engineering-decisions)
+* [📱 Screenshots](#-screenshots)
+* [🛠️ Setup Instructions](#️-setup-instructions)
+* [📦 Dependencies](#-dependencies)
+* [🚀 Future Improvements](#-future-improvements)
+* [👨‍💻 Author](#-author)
+* [📌 Conclusion](#-conclusion)
+
 
 ---
 
@@ -355,10 +378,11 @@ Ensures:
 
 ---
 
-### ✔ Offline-First Design
+### ✔ Data-Retrieval-First Design
 
 * Uses Hive for persistence
 * Automatically falls back when offline
+* Fetches data from API and also do POST at /chat endpoint
 
 ---
 
@@ -394,7 +418,7 @@ Ensures:
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/smart-assistant.git
+git clone https://github.com/Fenirok/smart_assistant.git
 cd smart-assistant
 ```
 
