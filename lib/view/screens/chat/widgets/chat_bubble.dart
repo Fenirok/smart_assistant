@@ -19,7 +19,7 @@ class ChatBubble extends StatelessWidget {
             ? CrossAxisAlignment.end
             : CrossAxisAlignment.start,
         children: [
-          // 🔹 LABEL
+          // LABEL
           Text(
             isUser ? "You" : "Assistant",
             style: TextStyle(
@@ -36,7 +36,7 @@ class ChatBubble extends StatelessWidget {
                 : MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 🔹 ASSISTANT AVATAR
+              // ASSISTANT AVATAR
               if (!isUser)
                 Padding(
                   padding: const EdgeInsets.only(right: 8),
@@ -51,12 +51,12 @@ class ChatBubble extends StatelessWidget {
                   ),
                 ),
 
-              // 🔹 MESSAGE BUBBLE
+              // MESSAGE BUBBLE
               Flexible(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     maxWidth:
-                        MediaQuery.of(context).size.width * 0.6, // 🔥 key line
+                        MediaQuery.of(context).size.width * 0.6,
                   ),
                   child: Container(
                     padding: const EdgeInsets.all(14),

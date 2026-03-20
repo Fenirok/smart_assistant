@@ -25,7 +25,7 @@ void main() async{
       providers: [
         ChangeNotifierProvider(
           create: (_) =>
-              HomeViewModel(SuggestionRepository(SuggestionRemoteDataSource()),),
+              HomeViewModel(SuggestionRepositoryImpl(SuggestionRemoteDataSource()),),
         ),
         ChangeNotifierProvider(create: (_) => ThemeViewModel()),
         ChangeNotifierProvider(
@@ -37,18 +37,24 @@ void main() async{
           ),
         ),
         ChangeNotifierProvider(
-          create: (_) => ChatViewModel(
-            ChatRepository(
-              ChatRemoteDataSource(),
-              ChatLocalDataSource(),
-            ),
-          ),
+          create: (_) {
+            final vm = ChatViewModel(
+              ChatRepositoryImpl(
+                ChatRemoteDataSource(),
+                ChatLocalDataSource(),
+              ),
+
+            );
+            vm.clearChat();
+            return vm;
+          }
         ),
       ],
       child: MyApp(),
     ),
   );
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

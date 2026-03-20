@@ -1,30 +1,52 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:smart_assistant/main.dart';
+import 'package:smart_assistant/view/screens/chat/widgets/chat_bubble.dart';
+import 'package:smart_assistant/view/screens/home/widgets/suggestion_card_widget.dart';
+import 'package:smart_assistant/view/screens/chat_history/widgets/chat_history_card.dart';
+import 'package:smart_assistant/data/models/message_bubble_model.dart';
+import 'package:smart_assistant/data/models/suggestions_model.dart';
+import 'package:smart_assistant/data/models/conversation_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets("ChatBubble renders correctly", (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: ChatBubble(
+        message: MessageBubble(
+          text: "What is Flutter?",
+          isUser: true,
+          time: DateTime.now(),
+        ),
+      ),
+    ));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text("What is Flutter?"), findsOneWidget);
+    expect(find.text("You"), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets("SuggestionCard renders correctly", (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: SuggestionCard(
+        suggestion: Suggestion(
+          id: "1",
+          title: "What is Flutter?",
+          description: "UI toolkit",
+        ),
+      ),
+    ));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.text("What is Flutter?"), findsOneWidget);
+  });
+
+  testWidgets("ChatHistoryCard renders correctly", (tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: ChatHistoryCard(
+        convo: Conversations(
+          title: "What is Flutter?",
+          subtitle: "UI toolkit",
+        ),
+      ),
+    ));
+
+    expect(find.text("What is Flutter?"), findsOneWidget);
   });
 }

@@ -1,12 +1,22 @@
 import '../local/chat_local.dart';
 import '../remote/chat_api.dart';
 
-class ChatRepository {
+abstract class ChatRepository {
+  Future<String> getReply(String message);
+
+  void saveMessage(Map<String, dynamic> message);
+
+  List<Map<String, dynamic>> getLocalMessages();
+
+  void clearChat();
+}
+
+class ChatRepositoryImpl implements ChatRepository{
   final ChatRemoteDataSource remote;
 
   final ChatLocalDataSource local;
 
-  ChatRepository(this.remote, this.local);
+  ChatRepositoryImpl(this.remote, this.local);
 
   Future<String> getReply(String message) async {
     return await remote.sendMessage(message);

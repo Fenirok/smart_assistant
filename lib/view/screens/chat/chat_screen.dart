@@ -23,6 +23,7 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<ChatViewModel>();
@@ -33,7 +34,6 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
-
         leading: Icon(Icons.menu),
         toolbarHeight: 80,
         title: Text(

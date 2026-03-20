@@ -9,6 +9,7 @@ class ChatHistoryViewModel extends ChangeNotifier {
 
   List<Conversations> conversations = [];
   bool isLoading = false;
+  bool _isFetching = false;
 
   ChatHistoryViewModel(this.repository) {
     listenToConnectivity();
@@ -18,7 +19,7 @@ class ChatHistoryViewModel extends ChangeNotifier {
 
   void listenToConnectivity() {
     _subscription = Connectivity().onConnectivityChanged.listen((result) {
-      if (result != ConnectivityResult.none) {
+      if (result != ConnectivityResult.none && !_isFetching) {
         loadHistory();
       }
     });
@@ -30,18 +31,28 @@ class ChatHistoryViewModel extends ChangeNotifier {
   }
 
   Future<void> loadHistory() async {
+    if (_isFetching) return;
+
+    _isFetching = true;
     isLoading = true;
     notifyListeners();
 
     try {
       final connectivity = await Connectivity().checkConnectivity();
 
-      // ONLINE
       if (connectivity != ConnectivityResult.none) {
-        conversations = await repository.getHistory();
-      }
-      // OFFLINE
-      else {
+        // ONLINE
+        final apiData = await repository.getHistory();
+
+        if (apiData.isNotEmpty) {
+          conversations = apiData;
+        } else {
+
+          final localData = repository.getLocalMessages();
+          conversations = _convertHiveToConversations(localData);
+        }
+      } else {
+        // OFFLINE
         final localData = repository.getLocalMessages();
         conversations = _convertHiveToConversations(localData);
       }
@@ -49,12 +60,12 @@ class ChatHistoryViewModel extends ChangeNotifier {
     } catch (e) {
       print("ERROR: $e");
 
-      // FALLBACK -> HIVE
       final localData = repository.getLocalMessages();
       conversations = _convertHiveToConversations(localData);
     }
 
     isLoading = false;
+    _isFetching = false;
     notifyListeners();
   }
 

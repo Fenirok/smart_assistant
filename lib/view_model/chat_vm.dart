@@ -5,21 +5,13 @@ import '../data/datasources/repositories/chat_repository.dart';
 class ChatViewModel extends ChangeNotifier {
   final ChatRepository repository;
 
-  ChatViewModel(this.repository) {
-    loadMessages(); // load saved messages
-  }
+  ChatViewModel(this.repository);
 
   List<MessageBubble> messages = [];
   bool isTyping = false;
 
-  // LOAD FROM HIVE
-  void loadMessages() {
-    final data = repository.getLocalMessages();
-
-    messages = data
-        .map((e) => MessageBubble.fromMap(e))
-        .toList();
-
+  void clearChat() {
+    messages.clear();
     notifyListeners();
   }
 
@@ -33,8 +25,6 @@ class ChatViewModel extends ChangeNotifier {
     );
 
     messages.add(userMsg);
-
-    // SAVE USER MESSAGE
     repository.saveMessage(userMsg.toMap());
 
     notifyListeners();
@@ -43,7 +33,7 @@ class ChatViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      await Future.delayed(Duration(milliseconds: 400));
+      await Future.delayed(const Duration(milliseconds: 400));
 
       final reply = await repository.getReply(text);
 
@@ -54,8 +44,6 @@ class ChatViewModel extends ChangeNotifier {
       );
 
       messages.add(botMsg);
-
-      // SAVE BOT MESSAGE
       repository.saveMessage(botMsg.toMap());
 
     } catch (e) {
@@ -71,4 +59,6 @@ class ChatViewModel extends ChangeNotifier {
     isTyping = false;
     notifyListeners();
   }
+
+
 }
