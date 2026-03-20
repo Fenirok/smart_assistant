@@ -383,6 +383,8 @@ Ensures:
 
 ### Dark Mode Screens
 ![Home Screen](screenshots/darkHomeScreen.png)  ![chat Screen](screenshots/darkChatScreen.png) ![chat_history_Screen](screenshots/darkHistoryScreen.png) 
+
+### Offline Data Hive Screens
 ![Chat History Screen](screenshots/offlineHistoryScreen.png)   
 
 ---
